@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  corba-server:
+    build:
+      context: ../
+      dockerfile: CORBA/Dockerfile
+    container_name: corba-server
+    # Expose naming service port if needed (omniORB default 2809)
+    ports:
+      - "2809:2809"

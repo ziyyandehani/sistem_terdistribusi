@@ -1,0 +1,17 @@
+services:
+  rpc-server:
+    build:
+      context: ../
+      dockerfile: RPC/Dockerfile
+    container_name: rpc-server
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+  rpc-client:
+    build:
+      context: ../
+      dockerfile: RPC/Dockerfile
+    container_name: rpc-client
+    depends_on:
+      - rpc-server
+    entrypoint: ["sh", "-c", "sleep 3 && python rpcclient.py && tail -f /dev/null"]

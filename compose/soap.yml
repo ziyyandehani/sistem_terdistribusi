@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  soap-server:
+    build:
+      context: ../
+      dockerfile: SOAP/Dockerfile
+    container_name: soap-server
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+  soap-client:
+    build:
+      context: ../
+      dockerfile: SOAP/Dockerfile
+    container_name: soap-client
+    depends_on:
+      - soap-server
+    entrypoint: ["sh", "-c", "sleep 4 && python client.py && tail -f /dev/null"]

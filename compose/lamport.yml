@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  lamport-server:
+    build:
+      context: ../
+      dockerfile: Sync/Dockerfile
+    container_name: lamport-server
+    command: ["python", "s_lamp.py"]
+    ports:
+      - "12345:12345"
+  lamport-client:
+    build:
+      context: ../
+      dockerfile: Sync/Dockerfile
+    container_name: lamport-client
+    depends_on:
+      - lamport-server
+    command: ["sh", "-c", "sleep 2 && python c_lamp.py"]

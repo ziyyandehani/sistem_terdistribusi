@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  reqresp-server:
+    build:
+      context: ../
+      dockerfile: Reqresp/Dockerfile
+    container_name: reqresp-server
+    ports:
+      - "2222:2222"
+  reqresp-client:
+    build:
+      context: ../
+      dockerfile: Reqresp/Dockerfile
+    container_name: reqresp-client
+    depends_on:
+      - reqresp-server
+    entrypoint: ["python", "auto_client.py"]

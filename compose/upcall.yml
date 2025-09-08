@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  upcall-server:
+    build:
+      context: ../
+      dockerfile: upcall/Dockerfile
+    container_name: upcall-server
+    ports:
+      - "6000:6000"
+  upcall-client:
+    build:
+      context: ../
+      dockerfile: upcall/Dockerfile
+    container_name: upcall-client
+    depends_on:
+      - upcall-server
+    entrypoint: ["sh", "-c", "sleep 2 && python clientcall.py"]

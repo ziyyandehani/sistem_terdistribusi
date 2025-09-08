@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  zmq-rep:
+    build:
+      context: ../
+      dockerfile: ZMQ/Dockerfile
+    container_name: zmq-rep
+    command: ["python", "serverzmq.py"]
+    ports:
+      - "5555:5555"
+  zmq-req:
+    build:
+      context: ../
+      dockerfile: ZMQ/Dockerfile
+    container_name: zmq-req
+    depends_on:
+      - zmq-rep
+    entrypoint: ["sh", "-c", "sleep 2 && python clientzmq.py && tail -f /dev/null"]
+  zmq-pub:
+    build:
+      context: ../
+      dockerfile: ZMQ/Dockerfile
+    container_name: zmq-pub
+    command: ["python", "pubzmq.py"]
+    ports:
+      - "12345:12345"
+  zmq-sub:
+    build:
+      context: ../
+      dockerfile: ZMQ/Dockerfile
+    container_name: zmq-sub
+    depends_on:
+      - zmq-pub
+    entrypoint: ["sh", "-c", "sleep 2 && python subzmq.py"]
