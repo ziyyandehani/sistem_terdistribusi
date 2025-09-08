@@ -11,18 +11,18 @@ All compose files are under `compose/`.
 
 | Pattern | Compose File | Run Command | Notes |
 |---------|--------------|-------------|-------|
-| REST (Flask) | `compose/rest.yml` | `docker compose -f compose/rest.yml up --build` | Exposes 5151 |
-| JSON-RPC | `compose/rpc.yml` | `docker compose -f compose/rpc.yml up --build` | Server + auto client |
-| SOAP | `compose/soap.yml` | `docker compose -f compose/soap.yml up --build` | WSDL at `:8000/?wsdl` |
-| MQTT (Mosquitto) | `compose/mqtt.yml` | `docker compose -f compose/mqtt.yml up --build` | Broker + pub/sub |
-| TCP Req/Resp | `compose/reqresp.yml` | `docker compose -f compose/reqresp.yml up --build` | Echo demo |
-| UDP One-way | `compose/udp.yml` | `docker compose -f compose/udp.yml up --build` | Uses UDP 12345 |
-| ZeroMQ (REQ/REP + PUB/SUB) | `compose/zmq.yml` | `docker compose -f compose/zmq.yml up --build` | Two patterns |
-| ZooKeeper Leader Election | `compose/zookeeper_election.yml` | `docker compose -f compose/zookeeper_election.yml up --build` | 1 ZK + 3 nodes |
-| Processes & Threads | `compose/code_process.yml` | `docker compose -f compose/code_process.yml up --build` | Multi-proc & threads |
-| CORBA | `compose/corba.yml` | `docker compose -f compose/corba.yml up --build` | omniORB server |
-| Upcall Demo | `compose/upcall.yml` | `docker compose -f compose/upcall.yml up --build` | Client/server callback |
-| Lamport Clock (partial) | `compose/lamport.yml` | `docker compose -f compose/lamport.yml up --build` | Needs counterpart |
+| REST (Flask) | `compose/rest.yml` | `docker compose -f compose/rest.yml up -d` | Exposes 5151 |
+| JSON-RPC | `compose/rpc.yml` | `docker compose -f compose/rpc.yml up -d` | Server + auto client |
+| SOAP | `compose/soap.yml` | `docker compose -f compose/soap.yml up -d` | WSDL at `:8000/?wsdl` |
+| MQTT (Mosquitto) | `compose/mqtt.yml` | `docker compose -f compose/mqtt.yml up -d` | Broker + pub/sub |
+| TCP Req/Resp | `compose/reqresp.yml` | `docker compose -f compose/reqresp.yml up -d` | Echo demo |
+| UDP One-way | `compose/udp.yml` | `docker compose -f compose/udp.yml up -d` | Uses UDP 12345 |
+| ZeroMQ (REQ/REP + PUB/SUB) | `compose/zmq.yml` | `docker compose -f compose/zmq.yml up -d` | Two patterns |
+| ZooKeeper Leader Election | `compose/zookeeper_election.yml` | `docker compose -f compose/zookeeper_election.yml up -d` | 1 ZK + 3 nodes |
+| Processes & Threads | `compose/code_process.yml` | `docker compose -f compose/code_process.yml up -d` | Multi-proc & threads |
+| CORBA | `compose/corba.yml` | `docker compose -f compose/corba.yml up -d` | omniORB server |
+| Upcall Demo | `compose/upcall.yml` | `docker compose -f compose/upcall.yml up -d` | Client/server callback |
+| Lamport Clock (partial) | `compose/lamport.yml` | `docker compose -f compose/lamport.yml up -d` | Needs counterpart |
 
 Stop with Ctrl+C or:
 ```bash
