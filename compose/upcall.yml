@@ -5,8 +5,8 @@ services:
       context: ../
       dockerfile: upcall/Dockerfile
     container_name: upcall-server
-    ports:
-      - "6000:6000"
+    volumes:
+      - ../upcall:/app:rw
   upcall-client:
     build:
       context: ../
@@ -14,4 +14,6 @@ services:
     container_name: upcall-client
     depends_on:
       - upcall-server
-    entrypoint: ["sh", "-c", "sleep 2 && python clientcall.py"]
+    volumes:
+      - ../upcall:/app:rw
+    command: ["tail", "-f", "/dev/null"]

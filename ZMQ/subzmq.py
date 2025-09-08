@@ -11,7 +11,8 @@ import zmq
 def subscriber():
     context = zmq.Context()
     socket = context.socket(zmq.SUB)
-    socket.connect("tcp://127.0.0.1:12345")  # Connect to the publisher's address
+    # Connect via docker compose DNS (publisher runs in zmq-pub container)
+    socket.connect("tcp://zmq-pub:12345")
     socket.setsockopt_string(zmq.SUBSCRIBE, "WAKTU")  # Subscribe to the TIME topic
 
     while True:

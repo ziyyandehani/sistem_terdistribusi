@@ -12,7 +12,8 @@ import socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Server address (match serverUDP.py listening port 12345)
-server_address = ('localhost', 12345)
+# Use docker compose service name for UDP server
+server_address = ('udp-server', 12345)
 
 # Send data to server
 message = "Hello, UDP server2!"

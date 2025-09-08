@@ -11,7 +11,8 @@ import json
 
 # Fungsi untuk memanggil RPC
 def call_rpc(method, params):
-    url = "http://localhost:4000"
+    # Use docker compose service name for internal networking
+    url = "http://rpc-server:4000"
     headers = {'content-type': 'application/json'}
     payload = {
         "jsonrpc": "2.0",

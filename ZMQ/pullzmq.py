@@ -13,7 +13,8 @@ import pickle
 def worker(id):
     context = zmq.Context()
     socket = context.socket(zmq.PULL)
-    socket.connect("tcp://localhost:9999")  # Connect to the producer
+    # Connect to the push producer container by its service name (defined in docker compose)
+    socket.connect("tcp://zmq-push:9999")
 
     while True:
         work = pickle.loads(socket.recv())  # Receive work from producer

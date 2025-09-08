@@ -9,8 +9,9 @@ Created on Sun Sep  8 14:16:13 2024
 import socket
 
 def client_program():
-    client_socket = socket.socket()  
-    client_socket.connect((' 10.200.50.160', 4141))  
+    client_socket = socket.socket()
+    # Use docker compose service DNS instead of a hardcoded external IP
+    client_socket.connect(('upcall-server', 4141))  
     
     message = input("Enter message: ")  
     

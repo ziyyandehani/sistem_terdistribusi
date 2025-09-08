@@ -7,19 +7,32 @@ Created on Sun Sep  8 17:05:25 2024
 """
 
 import requests
+import argparse
+import sys
 
-# URL endpoint dari server REST
-url = 'http://rest-server:5151/add'
+BASE = 'http://rest-server:5151'
 
-# Parameter yang akan dikirim ke server
-params = {'a': 10, 'b': 5}
+def call(endpoint, a, b):
+    try:
+        r = requests.get(f"{BASE}/{endpoint}", params={'a': a, 'b': b}, timeout=3)
+        if r.status_code == 200:
+            data = r.json()
+            print(f"{endpoint}({a},{b}) = {data['result']}")
+        else:
+            print(f"{endpoint} error {r.status_code}: {r.text}")
+    except Exception as e:
+        print(f"{endpoint} exception: {e}")
 
-# Mengirimkan permintaan GET ke server REST
-response = requests.get(url, params=params)
+def main():
+    parser = argparse.ArgumentParser(description="Simple REST client for add/mul endpoints")
+    parser.add_argument('--op', choices=['add','mul','both'], default='both', help='Operation to invoke')
+    parser.add_argument('-a', type=int, default=10)
+    parser.add_argument('-b', type=int, default=5)
+    args = parser.parse_args()
+    if args.op in ('add','both'):
+        call('add', args.a, args.b)
+    if args.op in ('mul','both'):
+        call('mul', args.a, args.b)
 
-# Menampilkan respons dari server
-if response.status_code == 200:
-    data = response.json()
-    print(f"Hasil penjumlahan: {data['result']}")
-else:
-    print(f"Error: {response.status_code}, {response.text}")
+if __name__ == '__main__':
+    sys.exit(main())

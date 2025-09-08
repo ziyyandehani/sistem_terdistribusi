@@ -10,7 +10,8 @@ import socket
 
 def client_program():
     client_socket = socket.socket()  
-    client_socket.connect(('127.0.0.1', 2222))  
+    # Use docker compose service DNS name
+    client_socket.connect(('reqresp-server', 2222))  
     
     message = input("Enter message: ")  
     

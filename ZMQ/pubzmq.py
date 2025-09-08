@@ -12,7 +12,8 @@ import time
 def publisher():
     context = zmq.Context()
     socket = context.socket(zmq.PUB)
-    socket.bind("tcp://127.0.0.1:12345")  # Bind to localhost
+    # Bind on all interfaces for inter-container access
+    socket.bind("tcp://*:12345")
 
     time.sleep(2)  # Delay to ensure the subscriber has time to connect
     while True:

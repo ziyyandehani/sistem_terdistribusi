@@ -26,6 +26,7 @@ app = Application([CalculatorService],
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
     wsgi_app = WsgiApplication(app)
-    server = make_server('127.0.0.1', 8000, wsgi_app)
-    print("Server berjalan di http://127.0.0.1:8000")
+    # Bind on all interfaces for container networking
+    server = make_server('0.0.0.0', 8000, wsgi_app)
+    print("SOAP server listening on http://0.0.0.0:8000 (service DNS: soap-server:8000)")
     server.serve_forever()

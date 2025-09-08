@@ -3,9 +3,9 @@ services:
   mqtt-broker:
     image: eclipse-mosquitto:2.0
     container_name: mqtt-broker
-    ports:
-      - "1883:1883"
     restart: unless-stopped
+    volumes:
+      - ../MQTT/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
   mqtt-pub:
     build:
       context: ../
@@ -13,9 +13,9 @@ services:
     container_name: mqtt-publisher
     depends_on:
       - mqtt-broker
-    environment:
-      - BROKER=mqtt-broker
-    entrypoint: ["sh", "-c", "sleep 3 && python pub.py"]
+    volumes:
+      - ../MQTT:/app:rw
+    command: ["tail", "-f", "/dev/null"]
   mqtt-sub:
     build:
       context: ../
@@ -23,6 +23,6 @@ services:
     container_name: mqtt-subscriber
     depends_on:
       - mqtt-broker
-    environment:
-      - BROKER=mqtt-broker
-    command: ["python", "sub.py"]
+    volumes:
+      - ../MQTT:/app:rw
+    command: ["tail", "-f", "/dev/null"]

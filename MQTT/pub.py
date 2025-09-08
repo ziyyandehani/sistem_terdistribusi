@@ -10,13 +10,13 @@ import paho.mqtt.client as mqtt
 import time
 import sys
 
-# Inisialisasi broker MQTT - menggunakan broker publik yang lebih reliabel
-broker = "broker.hivemq.com"  # Public HiveMQ broker
+# Gunakan broker lokal dalam docker compose
+broker = "mqtt-broker"
 port = 1883  # Port default untuk MQTT
 
 # Inisialisasi topik dan pesan suhu
 topic = "sister/temp"
-suhu = 28  # Suhu tetap 26'C
+suhu = 28  # Suhu tetap 28'C
 
 # Callback untuk koneksi
 def on_connect(client, userdata, flags, rc, properties=None):

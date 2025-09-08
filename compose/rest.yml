@@ -4,15 +4,20 @@ services:
       context: ../
       dockerfile: REST/Dockerfile
     container_name: rest-server
-    ports:
-      - "5151:5151"
+    volumes:
+      - ../REST:/app:rw
     restart: unless-stopped
   rest-client:
-    image: curlimages/curl:8.7.1
+    build:
+      context: ../
+      dockerfile: REST/Dockerfile
     container_name: rest-client
     depends_on:
       - rest-server
     tty: true
     stdin_open: true
-    # command: ["sh", "-c", "sleep 3 && echo 'Testing /add' && curl -s 'http://rest-server:5151/add?a=10&b=5' && echo '\nTesting /mul' && curl -s 'http://rest-server:5151/mul?a=6&b=7' && echo '\nDone' && sleep 2"]
-    # tail keeps container alive for inspection; ctrl+c compose to stop
+    volumes:
+      - ../REST:/app:rw
+    command: ["tail", "-f", "/dev/null"]
+    # Example manual test (run manually, not auto):
+    # docker compose -f compose/rest.yml exec rest-client curl -s 'http://rest-server:5151/add?a=10&b=5'

@@ -7,8 +7,8 @@ Created on Sun Sep  8 16:52:27 2024
 """
 from zeep import Client
 
-# URL WSDL dari server SOAP lokal yang sedang berjalan
-wsdl = 'http://127.0.0.1:8000/?wsdl'
+# URL WSDL menggunakan nama service Docker Compose
+wsdl = 'http://soap-server:8000/?wsdl'
 
 # Membuat klien SOAP berdasarkan WSDL
 client = Client(wsdl=wsdl)

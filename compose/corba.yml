@@ -5,6 +5,16 @@ services:
       context: ../
       dockerfile: CORBA/Dockerfile
     container_name: corba-server
-    # Expose naming service port if needed (omniORB default 2809)
-    ports:
-      - "2809:2809"
+    volumes:
+      - ../CORBA:/app/CORBA:rw
+    command: ["sh", "-c", "omniidl -bpython hello.idl || true; python server.py"]
+  corba-client:
+    build:
+      context: ../
+      dockerfile: CORBA/Dockerfile
+    container_name: corba-client
+    depends_on:
+      - corba-server
+    volumes:
+      - ../CORBA:/app/CORBA:rw
+    command: ["tail", "-f", "/dev/null"]

@@ -5,8 +5,8 @@ services:
       context: ../
       dockerfile: oneway/Dockerfile
     container_name: udp-server
-    ports:
-      - "12345:12345/udp"
+    volumes:
+      - ../oneway:/app:rw
   udp-client:
     build:
       context: ../
@@ -14,4 +14,6 @@ services:
     container_name: udp-client
     depends_on:
       - udp-server
-    entrypoint: ["python", "clientUDP.py"]
+    volumes:
+      - ../oneway:/app:rw
+    command: ["tail", "-f", "/dev/null"]

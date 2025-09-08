@@ -4,8 +4,8 @@ services:
       context: ../
       dockerfile: RPC/Dockerfile
     container_name: rpc-server
-    ports:
-      - "4000:4000"
+    volumes:
+      - ../RPC:/app:rw
     restart: unless-stopped
   rpc-client:
     build:
@@ -14,4 +14,6 @@ services:
     container_name: rpc-client
     depends_on:
       - rpc-server
-    entrypoint: ["sh", "-c", "sleep 3 && python rpcclient.py && tail -f /dev/null"]
+    volumes:
+      - ../RPC:/app:rw
+    command: ["tail", "-f", "/dev/null"]

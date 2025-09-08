@@ -9,8 +9,8 @@ Created on Sun Sep  8 17:49:00 2024
 import paho.mqtt.client as mqtt
 import sys
 
-# Inisialisasi broker MQTT - menggunakan broker publik yang lebih reliabel
-broker = "broker.hivemq.com"  # Public HiveMQ broker
+# Gunakan broker lokal dalam docker compose
+broker = "mqtt-broker"  # Service name
 port = 1883  # Port default untuk MQTT
 topic = "sister/temp"
 

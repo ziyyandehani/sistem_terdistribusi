@@ -14,7 +14,8 @@ import pickle
 def producer():
     context = zmq.Context()
     socket = context.socket(zmq.PUSH)
-    socket.bind("tcp://127.0.0.1:9999")  # Bind socket to address
+    # Bind to all interfaces on port 9999 so other containers can connect via service DNS
+    socket.bind("tcp://*:9999")
 
     NWORKERS = 5  # Assume there are 5 workers
 

@@ -10,7 +10,8 @@ import zmq
 
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5555")
+# Connect using docker service DNS name of the REP server
+socket.connect("tcp://zmq-rep:5555")
 
 for request in range(1):
     print(f"Sending request {request} ...")

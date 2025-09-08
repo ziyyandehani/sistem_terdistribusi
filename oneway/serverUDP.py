@@ -12,7 +12,7 @@ import socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Bind the socket to an IP and port
-server_address = ('localhost', 12345)
+server_address = ('0.0.0.0', 12345)
 server_socket.bind(server_address)
 
 print(f"UDP server up and listening on {server_address}")

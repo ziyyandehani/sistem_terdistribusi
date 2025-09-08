@@ -9,10 +9,12 @@ Created on Sun Sep  8 14:04:45 2024
 import socket
 
 def server_program():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
-    server_socket.bind(('127.0.0.1', 2222))  
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Bind to all interfaces so other containers can reach the server
+    server_socket.bind(('0.0.0.0', 2222))  
     
     server_socket.listen(1)
+    print("Server listening on 0.0.0.0:2222")
     conn, address = server_socket.accept()  
     print("Connection from:", address)
     

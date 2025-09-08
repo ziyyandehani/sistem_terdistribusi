@@ -6,20 +6,24 @@ services:
       dockerfile: code_process/Dockerfile
     container_name: multiprocess-demo
     command: ["python", "multiprcs.py"]
+    volumes:
+      - ../code_process:/app/code_process:rw
   multithread-demo:
     build:
       context: ../
       dockerfile: code_process/Dockerfile
     container_name: multithread-demo
     command: ["python", "multithreads.py"]
+    volumes:
+      - ../code_process:/app/code_process:rw
   ice-server:
     build:
       context: ../
       dockerfile: code_process/Dockerfile
     container_name: ice-server
-    command: ["python", "ice_server.py"]
-    ports:
-      - "11000:11000"
+    command: ["sh", "-c", "test -f Demo_ice.py || slice2py Demo.ice; python ice_server.py"]
+    volumes:
+      - ../code_process:/app/code_process:rw
   ice-client:
     build:
       context: ../
@@ -27,4 +31,6 @@ services:
     container_name: ice-client
     depends_on:
       - ice-server
-    command: ["sh", "-c", "sleep 2 && python ice_client.py"]
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ../code_process:/app/code_process:rw
