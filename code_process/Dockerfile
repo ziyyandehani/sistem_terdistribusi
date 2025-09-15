@@ -15,4 +15,4 @@ RUN slice2py Demo.ice || (echo "slice2py not found in PATH - ensure zeroc-ice pr
 
 ENV PYTHONPATH=/app/code_process
 
-CMD ["python", "multiprcs.py"]
+CMD ["tail", "-f", "/dev/null"]

@@ -6,4 +6,4 @@ WORKDIR /app/CORBA
 # Generate Python stubs from IDL
 RUN omniidl -bpython hello.idl || true
 EXPOSE 2809
-CMD ["python", "server.py"]
+CMD ["tail", "-f", "/dev/null"]

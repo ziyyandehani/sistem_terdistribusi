@@ -6,4 +6,4 @@ COPY ZMQ/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY ZMQ/ /app/
 EXPOSE 5555 12345
-CMD ["python", "serverzmq.py"]
+CMD ["tail", "-f", "/dev/null"]

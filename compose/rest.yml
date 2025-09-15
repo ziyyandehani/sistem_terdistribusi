@@ -4,6 +4,8 @@ services:
       context: ../
       dockerfile: REST/Dockerfile
     container_name: rest-server
+    ports:
+      - "8080:5151"
     volumes:
       - ../REST:/app:rw
     restart: unless-stopped

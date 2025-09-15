@@ -6,4 +6,4 @@ COPY RPC/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY RPC/ /app/
 EXPOSE 4000
-CMD ["python", "rpcserver.py"]
+CMD ["tail", "-f", "/dev/null"]

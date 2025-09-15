@@ -3,4 +3,4 @@ WORKDIR /app
 COPY Sync/ /app/Sync/
 WORKDIR /app/Sync
 EXPOSE 12345
-CMD ["python", "c_lamp.py"]
+CMD ["tail", "-f", "/dev/null"]

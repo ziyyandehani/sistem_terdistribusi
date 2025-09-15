@@ -5,4 +5,4 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 COPY MQTT/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY MQTT/ /app/
-CMD ["python", "sub.py"]
+CMD ["tail", "-f", "/dev/null"]

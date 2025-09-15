@@ -6,4 +6,4 @@ COPY REST/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY REST/ /app/
 EXPOSE 5151
-CMD ["python", "server.py"]
+CMD ["tail", "-f", "/dev/null"]
