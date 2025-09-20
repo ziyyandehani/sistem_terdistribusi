@@ -59,3 +59,10 @@ Layanan kemudian dimatikan dengan:
     docker compose -f compose/udp.yml down
 
 ![Screenshot](/oneway/images/image7.png)
+
+-----------------------------------------------------------------------------------------------
+## Wireshark
+Paket yang sudah disimpan dalam file udp.pcap tadi kemudian dapat dibuka dan dibaca pesan di dalamnya menggunakan Wireshark
+
+![Screenshot](/oneway/images/udp-wireshark.png)
+

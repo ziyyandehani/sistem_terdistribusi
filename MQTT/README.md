@@ -67,6 +67,12 @@ Ketika ini dilakukan, bridge network yang sebelumnya muncul juga ikut hilang, se
 ![Screenshot](/MQTT/images/bridge-notfound.png)
 
 -----------------------------------------------------------------------------------------------
+## Wireshark
+Paket yang sudah disimpan dalam file mqtt.pcap tadi kemudian dapat dibuka dan dibaca pesan di dalamnya menggunakan Wireshark
+
+![Screenshot](/MQTT/images/mqtt-wireshark.png)
+
+-----------------------------------------------------------------------------------------------
 
 ## Modifikasi Kode Program
 

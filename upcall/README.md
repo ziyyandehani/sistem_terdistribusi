@@ -59,3 +59,10 @@ Layanan kemudian dimatikan dengan:
      docker compose -f compose/upcall.yml down
 
 ![Screenshot](/upcall/images/image8.png)
+
+-----------------------------------------------------------------------------------------------
+## Wireshark
+Paket yang sudah disimpan dalam file upcall.pcap tadi kemudian dapat dibuka dan dibaca pesan di dalamnya menggunakan Wireshark
+
+![Screenshot](/upcall/images/upcall-wireshark.png)
+

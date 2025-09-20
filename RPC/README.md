@@ -61,6 +61,13 @@ Layanan kemudian dimatikan dengan:
 
 ------------------------------------------------------------------------------------------
 
+## Wireshark
+Paket yang sudah disimpan dalam file rpc.pcap tadi kemudian dapat dibuka dan dibaca pesan di dalamnya menggunakan Wireshark
+
+![Screenshot](/RPC/images/rpc-wireshark.png)
+
+-----------------------------------------------------------------------------------------------
+
 ## Modifikasi kode program
 
 1. Memodifikasi kode program rpcserver.py
