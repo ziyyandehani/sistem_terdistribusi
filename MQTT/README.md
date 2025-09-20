@@ -2,12 +2,15 @@
 ## Cara Menjalankan
 
 1. Jalankan service MQTT:
+   
    ```bash
     docker compose -f compose/mqtt.yml up -d
-![Screenshot](/MQTT/images/docker_up-d.png)
+
+![Screenshot](/MQTT/images/docker_up-d_start.png)
 
 Perintah ini digunakan untuk membuat dan menyalakan container MQTT (publisher dan subscriber) secara background.
 Untuk mengecek apakah container sudah berjalan. saya jalankan:
+    
     ```bash
     docker ps
 
@@ -15,14 +18,17 @@ Untuk mengecek apakah container sudah berjalan. saya jalankan:
 
 2. Mengecek network interface Docker
 Setelah itu saya jalankan:
+    
     ```bash
      ip a
+
 ![Screenshot](/MQTT/images/ip-a.png)
 
 Dari sini terlihat bahwa Docker membuat sebuah jembatan jaringan (bridge) baru. Alamat bridge inilah yang nantinya dipakai untuk melakukan capture trafik dengan tcpdump.
 
 3. Menangkap trafik MQTT
 Dengan mengetahui interface bridge, saya kemudian menjalankan:
+    
     ```bash
     sudo tcpdump -nnvi <nama_bridge> -w mqtt.pcap
 
@@ -32,6 +38,7 @@ Perintah ini akan menyimpan semua paket yang lewat di interface tersebut ke dala
 
 4. Menjalankan subscriber dan publisher
 Supaya ada trafik MQTT yang lewat, saya jalankan subscriber dan publisher dari dalam container:
+    
     ```bash
     docker compose -f compose/mqtt.yml exec mqtt-sub python sub.py
     docker compose -f compose/mqtt.yml exec mqtt-pub python pub.py
@@ -47,11 +54,13 @@ Setelah selesai, saya menekan Ctrl + C pada keduanya dan mqtt.pcap untuk menghen
 
 6. Menghentikan layanan Docker Compose
 Layanan kemudian dimatikan dengan:
+    
     ```bash
     docker compose -f compose/mqtt.yml down
 
 ![Screenshot](/MQTT/images/docker-otw-down.png)
 ![Screenshot](/MQTT/images/docker-removed.png)
+
 Ketika ini dilakukan, bridge network yang sebelumnya muncul juga ikut hilang, sehingga jika hendak menangkap trafik disana, pesannya seperti ini:
 
 ![Screenshot](/MQTT/images/bridge-notfound.png)
@@ -60,9 +69,12 @@ Ketika ini dilakukan, bridge network yang sebelumnya muncul juga ikut hilang, se
 
 ## Modifikasi Kode Program
 1. Kode Publisher sebelum dimodifikasi 
+
     ```python
     client.connect(broker, port, keepalive=60)
+
 diganti menjadi 5 detik
+
     ```python
     client.connect(broker, port, keepalive=5)
 
