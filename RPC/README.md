@@ -12,7 +12,7 @@ Perintah ini digunakan untuk membuat dan menyalakan container RPC (client dan se
 Untuk mengecek apakah container sudah berjalan. saya jalankan:
     
     ```bash
-     docker ps
+    docker ps
 
 ![Screenshot](/RPC/images/image6.png)
 
