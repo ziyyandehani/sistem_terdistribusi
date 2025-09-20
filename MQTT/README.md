@@ -99,7 +99,7 @@ Sebelum dimodifikasi
 Dimodifikasi menjadi
 
     ```python
-    topic = "sister/dht22_data"
+     topic = "sister/dht22_data"
     ```
 
 3. Hasil 
