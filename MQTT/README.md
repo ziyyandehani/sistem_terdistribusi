@@ -93,7 +93,7 @@ Sebelum dimodifikasi
 Sebelum dimodifikasi
 
     ```python
-    topic = "sister/temp"
+     topic = "sister/temp"
     ```
 
 Dimodifikasi menjadi
