@@ -83,7 +83,6 @@ Sebelum dimodifikasi
 
 Dimodifikasi menjadi
 
-    ```python
     topic = "sister/dht22_data"
     hum = 60  # Contoh nilai kelembaban
     suhu = 25  # Contoh nilai suhu
@@ -93,12 +92,10 @@ Dimodifikasi menjadi
 2. Kode Subcriber 
 Sebelum dimodifikasi
 
-    ```python
     topic = "sister/temp"
 
 Dimodifikasi menjadi
 
-    ```python
     topic = "sister/dht22_data"
 
 3. Hasil 
