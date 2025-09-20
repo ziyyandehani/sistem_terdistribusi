@@ -57,7 +57,7 @@ Setelah selesai, saya menekan Ctrl + C pada keduanya dan mqtt.pcap untuk menghen
 Layanan kemudian dimatikan dengan:
     
     ```bash
-    docker compose -f compose/mqtt.yml down
+     docker compose -f compose/mqtt.yml down
 
 ![Screenshot](/MQTT/images/docker-otw-down.png)
 ![Screenshot](/MQTT/images/docker-removed.png)
@@ -76,22 +76,23 @@ Memodifikasi nama topic dan pesan yang dikirim
 Sebelum dimodifikasi 
 
     ```python
-    topic = "sister/temp"
-    suhu = 28  # Contoh nilai suhu
+     topic = "sister/temp"
+     suhu = 28  # Contoh nilai suhu
 
-    message = f"Suhu {suhu} °C"
+     message = f"Suhu {suhu} °C"
 
-Dimodifikasi menjadi
+    Dimodifikasi menjadi
+    
+     topic = "sister/dht22_data"
+     hum = 60  # Contoh nilai kelembaban
+     suhu = 25  # Contoh nilai suhu
 
-    topic = "sister/dht22_data"
-    hum = 60  # Contoh nilai kelembaban
-    suhu = 25  # Contoh nilai suhu
-
-    message = f"Suhu {suhu} °C | Kelembaban: {hum} %"
-
+     message = f"Suhu {suhu} °C | Kelembaban: {hum} %"
+    ```
 2. Kode Subcriber 
 Sebelum dimodifikasi
 
+    ```python
     topic = "sister/temp"
 
 Dimodifikasi menjadi
