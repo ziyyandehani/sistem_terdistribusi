@@ -36,7 +36,7 @@ Dengan mengetahui interface bridge, saya kemudian menjalankan:
 Perintah ini akan menyimpan semua paket yang lewat di interface tersebut ke dalam file upcall.pcap agar bisa dianalisis lebih lanjut.
 
 4. Menjalankan client dan server
-Supaya ada trafik upcall yang lewat, saya jalankan subscriber dan publisher dari dalam container:
+Supaya ada trafik upcall yang lewat, saya jalankan client dan server dari dalam container:
     
     ```bash
     docker compose -f compose/upcall.yml exec upcall-server python servercall.py
