@@ -33,7 +33,7 @@ client.on_connect = on_connect
 # Menghubungkan ke broker dengan timeout dan error handling
 try:
     print(f"Menghubungkan ke {broker}...")
-    client.connect(broker, port, keepalive=60)
+    client.connect(broker, port, keepalive=5)  # Keepalive diubah menjadi 5 detik
 except Exception as e:
     print(f"Gagal menghubungkan ke broker: {e}")
     sys.exit(1)
