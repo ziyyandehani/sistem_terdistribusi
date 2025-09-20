@@ -12,7 +12,7 @@ Perintah ini digunakan untuk membuat dan menyalakan container UDP (client dan se
 Untuk mengecek apakah container sudah berjalan. saya jalankan:
     
     ```bash
-    docker ps
+     docker ps
 
 ![Screenshot](/oneway/images/image6.png)
 
