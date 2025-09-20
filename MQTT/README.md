@@ -66,7 +66,7 @@ Ketika ini dilakukan, bridge network yang sebelumnya muncul juga ikut hilang, se
 
 ![Screenshot](/MQTT/images/bridge-notfound.png)
 
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 
 ## Modifikasi Kode Program
 
