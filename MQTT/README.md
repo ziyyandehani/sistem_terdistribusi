@@ -24,6 +24,7 @@ Setelah itu saya jalankan:
 
 ![Screenshot](/MQTT/images/ip-a.png)
 
+
 Dari sini terlihat bahwa Docker membuat sebuah jembatan jaringan (bridge) baru. Alamat bridge inilah yang nantinya dipakai untuk melakukan capture trafik dengan tcpdump.
 
 3. Menangkap trafik MQTT
@@ -76,7 +77,7 @@ Sebelum dimodifikasi
 
     ```python
     topic = "sister/temp"
-    suhu = 25  # Contoh nilai suhu
+    suhu = 28  # Contoh nilai suhu
 
     message = f"Suhu {suhu} °C"
 
@@ -98,7 +99,9 @@ Sebelum dimodifikasi
 Dimodifikasi menjadi
 
     ```python
-    topic = "sister/temp"
+    topic = "sister/dht22_data"
+
+3. Hasil 
 
 
 
