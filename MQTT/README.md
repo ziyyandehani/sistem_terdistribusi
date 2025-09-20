@@ -81,8 +81,7 @@ Sebelum dimodifikasi
 
      message = f"Suhu {suhu} °C"
     ```
-Dimodifikasi menjadi
-
+    Dimodifikasi menjadi
     ```python
      topic = "sister/dht22_data"
      hum = 60  # Contoh nilai kelembaban
@@ -96,8 +95,7 @@ Sebelum dimodifikasi
     ```python
      topic = "sister/temp"
     ```
-Dimodifikasi menjadi
-
+    Dimodifikasi menjadi
     ```python
      topic = "sister/dht22_data"
     ```
