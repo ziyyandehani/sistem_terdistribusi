@@ -4,7 +4,7 @@
 1. Jalankan service RPC:
    
    ```bash
-    docker compose -f compose/udp.yml up -d
+    docker compose -f compose/rpc.yml up -d
 
 ![Screenshot](/RPC/images/image2.png)
 
