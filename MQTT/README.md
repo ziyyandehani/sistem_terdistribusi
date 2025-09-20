@@ -95,13 +95,10 @@ Sebelum dimodifikasi
     ```python
      topic = "sister/temp"
     ```
-
-Dimodifikasi menjadi
-
+    Dimodifikasi menjadi
     ```python
      topic = "sister/dht22_data"
     ```
-
 3. Hasil 
 
 ![Screenshot](/MQTT/images/hasil-modif.png)
