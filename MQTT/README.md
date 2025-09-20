@@ -68,15 +68,38 @@ Ketika ini dilakukan, bridge network yang sebelumnya muncul juga ikut hilang, se
 ---------------------------------------------------------------------------------
 
 ## Modifikasi Kode Program
-1. Kode Publisher sebelum dimodifikasi 
+
+Memodifikasi nama topic dan pesan yang dikirim
+
+1. Kode Publisher 
+Sebelum dimodifikasi 
 
     ```python
-    client.connect(broker, port, keepalive=60)
+    topic = "sister/temp"
+    suhu = 25  # Contoh nilai suhu
 
-diganti menjadi 5 detik
+    message = f"Suhu {suhu} °C"
+
+Dimodifikasi menjadi
 
     ```python
-    client.connect(broker, port, keepalive=5)
+    topic = "sister/dht22_data"
+    hum = 60  # Contoh nilai kelembaban
+    suhu = 25  # Contoh nilai suhu
+
+    message = f"Suhu {suhu} °C | Kelembaban: {hum} %"
+
+2. Kode Subcriber 
+Sebelum dimodifikasi
+
+    ```python
+    topic = "sister/temp"
+
+Dimodifikasi menjadi
+
+    ```python
+    topic = "sister/temp"
+
 
 
 

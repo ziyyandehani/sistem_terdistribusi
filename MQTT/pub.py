@@ -15,8 +15,9 @@ broker = "mqtt-broker"
 port = 1883  # Port default untuk MQTT
 
 # Inisialisasi topik dan pesan suhu
-topic = "sister/temp"
-suhu = 28  # Suhu tetap 28'C
+topic = "sister/dht22_data"
+hum = 60  # Contoh nilai kelembaban
+suhu = 25  # Contoh nilai suhu
 
 # Callback untuk koneksi
 def on_connect(client, userdata, flags, rc, properties=None):
@@ -33,7 +34,7 @@ client.on_connect = on_connect
 # Menghubungkan ke broker dengan timeout dan error handling
 try:
     print(f"Menghubungkan ke {broker}...")
-    client.connect(broker, port, keepalive=5)  # Keepalive diubah menjadi 5 detik
+    client.connect(broker, port, keepalive=60)  # Keepalive diubah menjadi 5 detik
 except Exception as e:
     print(f"Gagal menghubungkan ke broker: {e}")
     sys.exit(1)
@@ -42,7 +43,7 @@ except Exception as e:
 try:
     while True:
         # Mempublikasikan suhu ke topik
-        message = f"Suhu: {suhu}°C"
+        message = f"Suhu {suhu} °C | Kelembaban: {hum} %"
         client.publish(topic, message)
         print(f"Published: {message}")
         
